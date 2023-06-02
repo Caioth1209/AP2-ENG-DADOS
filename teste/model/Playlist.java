@@ -1,10 +1,14 @@
 package teste.model;
+
+import java.util.ArrayList;
+
 public class Playlist {
     private int id;
     private String nome;
     private boolean privado;
     private Categoria categoria;
     private Usuario usuario;
+    private ArrayList<Musica> musicas;
 
     public Playlist(int id, String nome, boolean privado, Categoria categoria, Usuario usuario) {
         this.id = id;

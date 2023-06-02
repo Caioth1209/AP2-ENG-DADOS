@@ -12,6 +12,7 @@ public class Musica {
     private int idCategoria;
     private ArrayList<Autor> autores = new ArrayList<Autor>();
     private ArrayList<Produtor> produtores = new ArrayList<Produtor>();
+    
 
     public Musica(int id, String titulo, String letra, Date dataLancamento, int duracao, int censura, int idCategoria) {
         this.id = id;

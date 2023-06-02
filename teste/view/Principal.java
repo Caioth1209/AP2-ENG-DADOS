@@ -30,16 +30,32 @@ public class Principal {
             MusicaDAO musicaDAO = new MusicaDAO(conexao);
             musicaDAO.create(musica);
 
-            
+
         } catch (Error e) {
             System.out.println(e.getMessage());
         }
         
+        // Criar autor sem musica
         // Buscar autor pelo nome
+        // Deletar autor pelo nome
+
+        // Criar produtor sem musica
         // Buscar produtor pelo nome
+        // Deletar produtor pelo nome
+
+        // Criar musica com autor e produtor
         // Buscar musica pelo titulo
         // Buscar musica pelo autor
         // Buscar musica pelo produtor
+        // Visualizar dados de musica exceto a letra
+        // Visualizar letra da musica
+        // Deletar musica pelo titulo
+
+        // Criar usuario
+        // Buscar usuario pelo nome
+        // Deletar usuario pelo nome
+
+        // Criar playlist
 
     }
 }
