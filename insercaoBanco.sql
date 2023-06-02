@@ -128,12 +128,12 @@ CREATE TABLE IF NOT EXISTS `ap2`.`musicaAutor` (
   `musica_id` INT NOT NULL,
   `autor_id` INT NOT NULL,
   PRIMARY KEY (`musica_id`, `autor_id`),
-  CONSTRAINT `fk_musica_has_autor`
+  CONSTRAINT `fk_musica_has_autor_musica1`
     FOREIGN KEY (`musica_id`)
     REFERENCES `ap2`.`musica` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_musica_has_autor`
+  CONSTRAINT `fk_musica_has_autor_autor1`
     FOREIGN KEY (`autor_id`)
     REFERENCES `ap2`.`autor` (`id`)
     ON DELETE CASCADE
@@ -144,16 +144,16 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ap2`.`playlist_has_musica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ap2`.`playlist_has_musica` (
+CREATE TABLE IF NOT EXISTS `ap2`.`playlistmusica` (
   `playlist_id` INT NOT NULL,
   `musica_id` INT NOT NULL,
   PRIMARY KEY (`playlist_id`, `musica_id`),
-  CONSTRAINT `fk_playlist_has_musica_playlist`
+  CONSTRAINT `fk_playlistmusica_playlist1`
     FOREIGN KEY (`playlist_id`)
     REFERENCES `ap2`.`playlist` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_playlist_has_musica`
+  CONSTRAINT `fk_playlistmusica_musica1`
     FOREIGN KEY (`musica_id`)
     REFERENCES `ap2`.`musica` (`id`)
     ON DELETE CASCADE
@@ -166,5 +166,5 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
-insert into categoria values ("Rock"), ("Pop"), ("Funk")
+INSERT INTO categoria (nome) VALUES ('Rock'), ("Funk");
 
