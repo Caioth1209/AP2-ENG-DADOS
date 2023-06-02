@@ -1,13 +1,14 @@
-public class Categoria {
+package teste.model;
+public class Autor {
     private int id;
     private String nome;
     
-    public Categoria(int id, String nome) {
+    public Autor(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Categoria(String nome) {
+    public Autor(String nome) {
         this.nome = nome;
     }
 
@@ -19,13 +20,12 @@ public class Categoria {
         return nome;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idAutor) {
+        this.id = idAutor;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    
 }

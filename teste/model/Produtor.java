@@ -1,30 +1,29 @@
-public class Autor {
+package teste.model;
+public class Produtor {
     private int id;
     private String nome;
-    
-    public Autor(int id, String nome) {
+
+    public Produtor(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Autor(String nome) {
+    public Produtor(String nome) {
         this.nome = nome;
     }
-
+    
     public int getId() {
         return id;
     }
-
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
-
-    public void setId(int idAutor) {
-        this.id = idAutor;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
+    
 }

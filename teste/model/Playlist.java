@@ -1,3 +1,4 @@
+package teste.model;
 public class Playlist {
     private int id;
     private String nome;

@@ -1,9 +1,9 @@
-package dao;
+package teste.dao;
 
 
 public class UsuarioDAO {
 
-    public void create(Usuario usuario) {
+    public void create() {
 
         
 

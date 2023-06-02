@@ -14,6 +14,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema ap2
 -- -----------------------------------------------------
+
+drop database if exists ap2;
 CREATE SCHEMA IF NOT EXISTS `ap2` DEFAULT CHARACTER SET utf8 ;
 USE `ap2` ;
 
@@ -145,3 +147,7 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO categoria (nome) VALUES ('Rock'), ('Funk'), ('POP');
+
+

@@ -1,3 +1,5 @@
+package teste.model;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Musica {
@@ -8,6 +10,8 @@ public class Musica {
     private int duracao;
     private int censura;
     private int idCategoria;
+    private ArrayList<Autor> autores = new ArrayList<Autor>();
+    private ArrayList<Produtor> produtores = new ArrayList<Produtor>();
 
     public Musica(int id, String titulo, String letra, Date dataLancamento, int duracao, int censura, int idCategoria) {
         this.id = id;
@@ -25,6 +29,12 @@ public class Musica {
         this.dataLancamento = dataLancamento;
         this.duracao = duracao;
         this.censura = censura;
+        this.idCategoria = idCategoria;
+    }
+
+    public Musica(String titulo, String letra, int idCategoria) {
+        this.titulo = titulo;
+        this.letra = letra;
         this.idCategoria = idCategoria;
     }
 
@@ -71,5 +81,35 @@ public class Musica {
         this.idCategoria = idCategoria;
     }
     
-    
+    public ArrayList<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(ArrayList<Autor> autores) {
+        this.autores = autores;
+    }
+
+    public void addAutor(Autor autor) {
+        this.autores.add(autor);
+    }
+
+    public void removeAutor(Autor autor) {
+        this.autores.remove(autor);
+    }
+
+    public ArrayList<Produtor> getProdutores() {
+        return produtores;
+    }
+
+    public void setProdutores(ArrayList<Produtor> produtores) {
+        this.produtores = produtores;
+    }
+
+    public void addProdutor(Produtor produtor) {
+        this.produtores.add(produtor);
+    }
+
+    public void removeProdutor(Produtor produtor) {
+        this.produtores.remove(produtor);
+    }
 }
