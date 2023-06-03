@@ -9,7 +9,7 @@ public class Musica {
     private Date dataLancamento;
     private int duracao;
     private int censura;
-    private int idCategoria;
+    private Categoria categoria;
     private ArrayList<Autor> autores = new ArrayList<Autor>();
     private ArrayList<Produtor> produtores = new ArrayList<Produtor>();
     private ArrayList<Playlist> playlists = new ArrayList<Playlist>();
@@ -17,29 +17,34 @@ public class Musica {
     public Musica() {
     }
 
-    public Musica(int id, String titulo, String letra, Date dataLancamento, int duracao, int censura, int idCategoria) {
+    public Musica(int id, String letra) {
+        this.id = id;
+        this.letra = letra;
+    }
+
+    public Musica(int id, String titulo, String letra, Date dataLancamento, int duracao, int censura, Categoria categoria) {
         this.id = id;
         this.titulo = titulo;
         this.letra = letra;
         this.dataLancamento = dataLancamento;
         this.duracao = duracao;
         this.censura = censura;
-        this.idCategoria = idCategoria;
+        this.categoria = categoria;
     }
 
-    public Musica(String titulo, String letra, Date dataLancamento, int duracao, int censura, int idCategoria) {
+    public Musica(String titulo, String letra, Date dataLancamento, int duracao, int censura, Categoria categoria) {
         this.titulo = titulo;
         this.letra = letra;
         this.dataLancamento = dataLancamento;
         this.duracao = duracao;
         this.censura = censura;
-        this.idCategoria = idCategoria;
+        this.categoria = categoria;
     }
 
-    public Musica(String titulo, String letra, int idCategoria) {
+    public Musica(String titulo, String letra, Categoria categoria) {
         this.titulo = titulo;
         this.letra = letra;
-        this.idCategoria = idCategoria;
+        this.categoria = categoria;
     }
 
     public int getId() {
@@ -78,11 +83,11 @@ public class Musica {
     public void setCensura(int censura) {
         this.censura = censura;
     }
-    public int getIdCategoria() {
-        return idCategoria;
+    public Categoria getCategoria() {
+        return categoria;
     }
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
     
     public ArrayList<Autor> getAutores() {

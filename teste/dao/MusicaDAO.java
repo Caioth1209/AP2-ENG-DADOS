@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import teste.model.Autor;
+import teste.model.Categoria;
 import teste.model.Musica;
 import teste.model.Produtor;
 
@@ -37,7 +38,7 @@ public class MusicaDAO {
                 }
                 pstm.setInt(4, musica.getDuracao());
                 pstm.setInt(5, musica.getCensura());
-                pstm.setInt(6, musica.getIdCategoria());
+                pstm.setInt(6, musica.getCategoria().getId());
     
                 pstm.execute();
     
@@ -63,7 +64,6 @@ public class MusicaDAO {
         }
     }
     
-
     public Musica findByTitle(String titulo) {
         try {
             String sql = "SELECT * FROM musica WHERE titulo = ?";
@@ -80,7 +80,11 @@ public class MusicaDAO {
                         musica.setDataLancamento(rs.getDate("dataLancamento"));
                         musica.setDuracao(rs.getInt("duracao"));
                         musica.setCensura(rs.getInt("censura"));
-                        musica.setIdCategoria(rs.getInt("id_categoria"));
+
+                        CategoriaDAO categoriaDAO = new CategoriaDAO(connection);
+                        Categoria categoria = categoriaDAO.findById(rs.getInt("id_categoria"));
+                        musica.setCategoria(categoria);
+
                         return musica;
                     }
                 }
@@ -109,7 +113,11 @@ public class MusicaDAO {
                         musica.setDataLancamento(rs.getDate("dataLancamento"));
                         musica.setDuracao(rs.getInt("duracao"));
                         musica.setCensura(rs.getInt("censura"));
-                        musica.setIdCategoria(rs.getInt("id_categoria"));
+
+                        CategoriaDAO categoriaDAO = new CategoriaDAO(connection);
+                        Categoria categoria = categoriaDAO.findById(rs.getInt("id_categoria"));
+                        musica.setCategoria(categoria);
+
                         musicas.add(musica);
                     }
                     return musicas;
@@ -137,7 +145,11 @@ public class MusicaDAO {
                         musica.setDataLancamento(rs.getDate("dataLancamento"));
                         musica.setDuracao(rs.getInt("duracao"));
                         musica.setCensura(rs.getInt("censura"));
-                        musica.setIdCategoria(rs.getInt("id_categoria"));
+
+                        CategoriaDAO categoriaDAO = new CategoriaDAO(connection);
+                        Categoria categoria = categoriaDAO.findById(rs.getInt("id_categoria"));
+                        musica.setCategoria(categoria);
+
                         musicas.add(musica);
                     }
                     return musicas;
@@ -147,7 +159,7 @@ public class MusicaDAO {
             throw new RuntimeException(e);
         }
     }
-    
+
     public void viewMusicData(int id) {
         try {
             String sql = "SELECT titulo, dataLancamento, duracao, censura, id_categoria FROM musica WHERE id = ?";
@@ -195,7 +207,6 @@ public class MusicaDAO {
         }
     }
     
-    
     public void deleteById(int id) {
         try {
             String sql = "DELETE FROM musica WHERE id = ?";
@@ -220,7 +231,7 @@ public class MusicaDAO {
                 pstm.setDate(3, new java.sql.Date(musica.getDataLancamento().getTime()));
                 pstm.setInt(4, musica.getDuracao());
                 pstm.setInt(5, musica.getCensura());
-                pstm.setInt(6, musica.getIdCategoria());
+                pstm.setInt(6, musica.getCategoria().getId());
                 pstm.setInt(7, musica.getId());
     
                 pstm.execute();
