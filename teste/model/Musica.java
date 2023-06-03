@@ -12,7 +12,10 @@ public class Musica {
     private int idCategoria;
     private ArrayList<Autor> autores = new ArrayList<Autor>();
     private ArrayList<Produtor> produtores = new ArrayList<Produtor>();
-    
+    private ArrayList<Playlist> playlists = new ArrayList<Playlist>();
+
+    public Musica() {
+    }
 
     public Musica(int id, String titulo, String letra, Date dataLancamento, int duracao, int censura, int idCategoria) {
         this.id = id;
@@ -113,4 +116,21 @@ public class Musica {
     public void removeProdutor(Produtor produtor) {
         this.produtores.remove(produtor);
     }
+
+    public ArrayList<Playlist> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(ArrayList<Playlist> playlists) {
+        this.playlists = playlists;
+    }
+
+    public void addPlaylist(Playlist playlist) {
+        this.playlists.add(playlist);
+    }
+
+    public void removePlaylist(Playlist playlist) {
+        this.playlists.remove(playlist);
+    }
+
 }

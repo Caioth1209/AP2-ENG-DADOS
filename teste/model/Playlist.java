@@ -8,7 +8,7 @@ public class Playlist {
     private boolean privado;
     private Categoria categoria;
     private Usuario usuario;
-    private ArrayList<Musica> musicas;
+    private ArrayList<Musica> musicas = new ArrayList<Musica>();
 
     public Playlist(int id, String nome, boolean privado, Categoria categoria, Usuario usuario) {
         this.id = id;
@@ -56,5 +56,20 @@ public class Playlist {
         this.usuario = usuario;
     }
 
+    public ArrayList<Musica> getMusicas() {
+        return musicas;
+    }
+
+    public void setMusicas(ArrayList<Musica> musicas) {
+        this.musicas = musicas;
+    }
+
+    public void addMusica(Musica musica) {
+        this.musicas.add(musica);
+    }
+
+    public void removeMusica(Musica musica) {
+        this.musicas.remove(musica);
+    }
     
 }

@@ -144,7 +144,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ap2`.`playlist_has_musica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ap2`.`playlistmusica` (
+CREATE TABLE IF NOT EXISTS `ap2`.`playlistMusica` (
   `playlist_id` INT NOT NULL,
   `musica_id` INT NOT NULL,
   PRIMARY KEY (`playlist_id`, `musica_id`),

@@ -3,6 +3,9 @@ public class Produtor {
     private int id;
     private String nome;
 
+    public Produtor() {
+    }
+
     public Produtor(int id, String nome) {
         this.id = id;
         this.nome = nome;

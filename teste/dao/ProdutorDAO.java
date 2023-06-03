@@ -73,16 +73,58 @@ public class ProdutorDAO {
         }
     }
 
-    public void read() {
-        
+    
+    public Produtor findByName(String nome) {
+        try {
+            String sql = "SELECT * FROM produtor WHERE nome = ?";
+    
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, nome);
+    
+                try (ResultSet rs = pstm.executeQuery()) {
+                    if (rs.next()) {
+                        Produtor produtor = new Produtor();
+                        produtor.setId(rs.getInt("id"));
+                        produtor.setNome(rs.getString("nome"));
+                        return produtor;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    
+        return null;
     }
     
-    public void update() {
-        
+    public void update(Produtor produtor) {
+        try {
+            String sql = "UPDATE produtor SET nome = ? WHERE id = ?";
+    
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setString(1, produtor.getNome());
+                pstm.setInt(2, produtor.getId());
+    
+                pstm.execute();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     
-    public void delete() {
-        
+    public void deleteById(int id) {
+        try {
+            String sql = "DELETE FROM produtor WHERE id = ?";
+    
+            try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+                pstm.setInt(1, id);
+    
+                pstm.execute();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+    
 
 }
