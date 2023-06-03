@@ -284,7 +284,7 @@ public class Principal {
             System.out.println("\n\nCRUD DE PLAYLIST\n");
 
             // criar playlist
-            Playlist playlist = new Playlist("Playlist do Caio", false, categoria, user2);
+            Playlist playlist = new Playlist("Playlist do Caio", false, categoria, user2, new Date(Date.valueOf("2023-01-01").getTime()));
             PlaylistDAO pldao = new PlaylistDAO(conexao);
             pldao.create(playlist);
 
@@ -334,7 +334,7 @@ public class Principal {
             System.out.println("\nDeletando playlist com id: " + playlist.getId());
             pldao.deleteById(playlist.getId());
 
-            Playlist playlist2 = new Playlist("Playlist do Lucas", false, categoria, user3);
+            Playlist playlist2 = new Playlist("Playlist do Lucas", false, categoria, user3, new Date(Date.valueOf("2007-01-01").getTime()));
             pldao.create(playlist2);
 
             System.out.print("\nPlaylist criada com nome: ");
@@ -364,6 +364,32 @@ public class Principal {
             System.out.println("\nEscutando músicas da playlist com id: " + playlistsUser.get(0).getId());
             System.out.println("Do usuário com cpf: " + user3.getCpf() + "\n");
             pldao.listen(playlistsUser.get(0).getId());
+
+            // buscando playlists pelo ano
+            playlistsUser = pldao.findByYear(2007);
+
+            System.out.println("\nBuscando playlists do ano: 2007");
+
+            if (playlistsUser.isEmpty()) {
+                System.out.println("Nenhuma playlist encontrada.");
+            } else {
+                for (Playlist pl : playlistsUser) {
+                    System.out.println(pl.getId() + ". " + pl.getNome());
+                }
+            }
+
+            // buscando playlists pelo ano
+            playlistsUser = pldao.findByYear(2023);
+
+            System.out.println("\nBuscando playlists do ano: 2023");
+
+            if (playlistsUser.isEmpty()) {
+                System.out.println("Nenhuma playlist encontrada.");
+            } else {
+                for (Playlist pl : playlistsUser) {
+                    System.out.println(pl.getId() + ". " + pl.getNome());
+                }
+            }
 
         } catch (Error e) {
             System.out.println(e.getMessage());

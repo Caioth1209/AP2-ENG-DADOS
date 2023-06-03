@@ -1,11 +1,13 @@
 package teste.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Playlist {
     private int id;
     private String nome;
     private boolean privado;
+    private Date dataCriacao;
     private Categoria categoria;
     private Usuario usuario;
     private ArrayList<Musica> musicas = new ArrayList<Musica>();
@@ -16,6 +18,23 @@ public class Playlist {
         this.privado = privado;
         this.categoria = categoria;
         this.usuario = usuario;
+    }
+
+    public Playlist(int id, String nome, boolean privado, Categoria categoria, Usuario usuario, Date dataCriacao) {
+        this.id = id;
+        this.nome = nome;
+        this.privado = privado;
+        this.categoria = categoria;
+        this.usuario = usuario;
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Playlist(String nome, boolean privado, Categoria categoria, Usuario usuario,  Date dataCriacao) {
+        this.nome = nome;
+        this.privado = privado;
+        this.categoria = categoria;
+        this.usuario = usuario;
+        this.dataCriacao = dataCriacao;
     }
 
     public Playlist(String nome, boolean privado, Categoria categoria, Usuario usuario) {
@@ -72,4 +91,11 @@ public class Playlist {
         this.musicas.remove(musica);
     }
     
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
 }

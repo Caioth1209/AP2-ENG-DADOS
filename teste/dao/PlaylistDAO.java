@@ -21,13 +21,14 @@ public class PlaylistDAO {
 
     public void create(Playlist playlist) {
         try {
-            String sql = "INSERT INTO playlist (nome, privado, id_categoria, cpf_usuario) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO playlist (nome, privado, id_categoria, cpf_usuario, dataCriacao) VALUES (?, ?, ?, ?, ?)";
 
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
                 pstm.setString(1, playlist.getNome());
                 pstm.setBoolean(2, playlist.isPrivado());
                 pstm.setInt(3, playlist.getCategoria().getId());
                 pstm.setString(4, playlist.getUsuario().getCpf());
+                pstm.setDate(5, new java.sql.Date(playlist.getDataCriacao().getTime()));
 
                 pstm.execute();
             }
@@ -129,7 +130,7 @@ public class PlaylistDAO {
         ArrayList<Playlist> playlists = new ArrayList<>();
 
         try {
-            String sql = "SELECT id, nome, privado, id_categoria, cpf_usuario FROM playlist WHERE YEAR(data_criacao) = ?";
+            String sql = "SELECT id, nome, privado, id_categoria, cpf_usuario FROM playlist WHERE YEAR(dataCriacao) = ?";
 
             try (PreparedStatement pstm = connection.prepareStatement(sql)) {
                 pstm.setInt(1, year);
